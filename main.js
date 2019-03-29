@@ -1,29 +1,39 @@
 // globals fetch
 
+// functions that create shortcuts:
 function qS (selector) {
     return document.querySelector(selector)
 }
-
 function qSA (selector) {
     return document.querySelectorAll(selector)
 }
 
-const search = qS('#search-event')
-const searchButton = document.createElement('button')
-searchButton.innerText = 'Go!'
-searchButton.addEventListener('click', function () {
-    searchMusic(input)})
-search.appendChild(searchButton)
-searchButton.classList.add('search-event')
+//! 1. Search for Music:
 
-function searchMusic (input) {
-    encodeURIComponent(input)
-    let promise = fetch(`https://itunes-api-proxy.glitch.me/search?term=${input}`).then(function (response) {
-        if (!response.ok) {
-            throw Error(response.statusText)
-        }
-        return response.json()
+// function searchMusic (input) {
+
+// }
+
+
+// //! 1.1 Get Music/Fetch
+
+    
+fetch(`https://itunes-api-proxy.glitch.me/search?id=909253&entity=album`)
+    .then(function (response) {
+        window.response = response
+        console.log(response)
     })
-    return promise
-}
-console.log(searchMusic())
+
+
+//! 2. Display results of searchMusic for user-selection:
+
+// function searchResults (input) {
+
+
+// }
+
+//! 3. Play user-selected track from searchResult:
+
+// function playTrack () {
+
+// }
