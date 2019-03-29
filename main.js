@@ -17,12 +17,17 @@ function qSA (selector) {
 
 // //! 1.1 Get Music/Fetch
 
-    
-fetch(`https://itunes-api-proxy.glitch.me/search?id=909253&entity=album`)
-    .then(function (response) {
-        window.response = response
-        console.log(response)
+function getMusic () {
+    const promise = fetch(`https://itunes-api-proxy.glitch.me/lookup?id=909253&entity=album`)
+    .then(function(response) {
+        if (!response.ok) {
+            throw Error(response.statusText)
+        }
+        return response.json()
     })
+    return promise
+}
+console.log(getMusic())
 
 
 //! 2. Display results of searchMusic for user-selection:
