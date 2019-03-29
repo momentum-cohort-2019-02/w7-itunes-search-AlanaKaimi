@@ -33,7 +33,9 @@ document.addEventListener('DOMContentLoaded', function() {
     .then(function (musicData) {
         console.log(musicData)
         let gmArtist = musicData.results[0].artistName
+        let gmAlbum = musicData.results[0].collectionName
         qS('#artist').innerHTML = `Artist: ${gmArtist}`
+        qS('#album').innerHTML = `Album: ${gmAlbum}`
     })
 })
 
