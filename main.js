@@ -38,6 +38,11 @@ document.addEventListener('DOMContentLoaded', function() {
         qS('#artist').innerHTML = `Artist: ${gmArtist}`
         qS('#album').innerHTML = `Album: ${gmAlbum}`
         qS('#track').innerHTML = `Track: ${gmTrack}`
+ 
+    //! Album Art is a work in Progress
+    // See weather app example for the Icon at lines 36-51 in JS, then referenced in html on line 16
+        let gmArtwork = musicData.results[0].artworkUrl30
+        qS('#artwork').innerHTML = `${gmArtwork}`
     })
 })
 
