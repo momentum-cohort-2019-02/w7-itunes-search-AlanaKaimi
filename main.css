@@ -11,8 +11,16 @@ header {
     border: 2px solid #5d0580;
 }
 
+#search-bar {
+
+}
+
 .search-bar {
     border-radius: 30px;
+}
+
+#search-event {
+    
 }
 
 .search-event {
