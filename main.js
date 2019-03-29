@@ -18,7 +18,7 @@ function qSA (selector) {
 
 // //! 1.1 Get Music/Fetch
 
-function getMusic () {
+function getMusic() {
     return fetch(`https://itunes-api-proxy.glitch.me/search?term=jack+johnson`)
     .then(function(response) {
         if (!response.ok) {
@@ -32,6 +32,8 @@ document.addEventListener('DOMContentLoaded', function() {
     getMusic()   
     .then(function (musicData) {
         console.log(musicData)
+        let gmArtist = musicData.results[0].artistName
+        qS('#artist').innerHTML = `Artist: ${gmArtist}`
     })
 })
 
