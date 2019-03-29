@@ -1,5 +1,6 @@
 // globals fetch
 
+
 // functions that create shortcuts:
 function qS (selector) {
     return document.querySelector(selector)
@@ -18,16 +19,22 @@ function qSA (selector) {
 // //! 1.1 Get Music/Fetch
 
 function getMusic () {
-    const promise = fetch(`https://itunes-api-proxy.glitch.me/lookup?id=909253&entity=album`)
+    return fetch(`https://itunes-api-proxy.glitch.me/search?term=jack+johnson`)
     .then(function(response) {
         if (!response.ok) {
             throw Error(response.statusText)
         }
         return response.json()
     })
-    return promise
 }
-console.log(getMusic())
+    
+document.addEventListener('DOMContentLoaded', function() {
+    getMusic()   
+    .then(function (musicData) {
+        console.log(musicData)
+    })
+})
+
 
 
 //! 2. Display results of searchMusic for user-selection:
