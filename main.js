@@ -28,15 +28,16 @@ function getMusic() {
     })
 }
     
-document.addEventListener('DOMContentLoaded', function() {
+function updateMusic () {
     getMusic()   
     .then(function (musicData) {
         console.log(musicData)
         let gmArtist = musicData.results[0].artistName
-        let gmAlbum = musicData.results[0].collectionName
-        let gmTrack = musicData.results[0].trackName
         qS('#artist').innerHTML = `Artist: ${gmArtist}`
+        let gmAlbum = musicData.results[0].collectionName
         qS('#album').innerHTML = `Album: ${gmAlbum}`
+
+        let gmTrack = musicData.results[0].trackName
         qS('#track').innerHTML = `Track: ${gmTrack}`
  
     // See weather app example for the Icon at lines 36-51 in JS, then referenced in html on line 16
@@ -44,7 +45,7 @@ document.addEventListener('DOMContentLoaded', function() {
         let artHolder = qS('#artwork')
         artHolder.innerHTML = `<img class="" src="${gmArtwork}" alt="${gmArtist}">`
     })
-})
+}
 
 
 
@@ -60,3 +61,12 @@ document.addEventListener('DOMContentLoaded', function() {
 // function playTrack () {
 
 // }
+
+document.addEventListener('DOMContentLoaded', function() {
+        updateMusic()
+})
+// document.addEventListener('DOMContentLoaded', function() {
+//     qS('').addEventListener('change', function (event) {
+//         updateMusic(event.target.value)
+//     })
+// })
