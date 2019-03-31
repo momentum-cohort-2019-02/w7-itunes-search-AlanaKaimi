@@ -18,6 +18,7 @@ function qSA (selector) {
 
 // //! 1.1 Get Music/Fetch
 
+// fetches data from itunes api and returns it 
 function getMusic() {
     return fetch(`https://itunes-api-proxy.glitch.me/search?term=jack+johnson`)
     .then(function(response) {
@@ -27,34 +28,54 @@ function getMusic() {
         return response.json()
     })
 }
-    
+
+//! 2 Display results of getMusic :
+
 function updateMusic () {
-    getMusic()   
+    // calls the getMusic function to have access to it's data
+    getMusic()
+    // Here we go...
     .then(function (musicData) {
         console.log(musicData)
-        let gmArtist = musicData.results[0].artistName
-        qS('#artist').innerHTML = `Artist: ${gmArtist}`
-        let gmAlbum = musicData.results[0].collectionName
-        qS('#album').innerHTML = `Album: ${gmAlbum}`
 
-        let gmTrack = musicData.results[0].trackName
-        qS('#track').innerHTML = `Track: ${gmTrack}`
- 
-    // See weather app example for the Icon at lines 36-51 in JS, then referenced in html on line 16
-        let gmArtwork = musicData.results[0].artworkUrl100
-        let artHolder = qS('#artwork')
-        artHolder.innerHTML = `<img class="" src="${gmArtwork}" alt="${gmArtist}">`
+        // finds the div id="track-list" 
+        const trackDiv = qS('#track-list')
+        // & sets it to empty
+        trackDiv.innerHTML = ''
+
+        // loop that iterates through musicData.results array
+        let idx
+        for (idx = 0; idx < musicData.results.length; idx++) {
+        // so, for each instance of results[idx]
+
+            // creates a div element to hold each track inside the track-list
+            const track = document.createElement('div')
+            // creates seperate div elements inside the track div for track info and the img
+            const trackInfo = document.createElement('div')
+            const albumCover = document.createElement('div')
+            
+            // adds class declarations to the assigned div's
+            track.classList.add('track')
+            trackInfo.classList.add('track-details')
+            albumCover.classList.add('cover-image')
+            
+            // assigns data from getMusic to the variables:      
+            let artistName = musicData.results[idx].artistName
+            let album = musicData.results[idx].collectionName
+            let songName = musicData.results[idx].trackName    
+            // Hint: See weather app example for the Icon at lines 36-51 in JS, then referenced in html on line 16
+            let coverImg = musicData.results[idx].artworkUrl100
+            
+            // inputs data elements into assigned div's
+            trackInfo.innerText = artistName + album + songName; albumCover.innerHTML = `<img src="${coverImg}">`
+
+            // update the new track
+            track.append(trackInfo, albumCover)
+            // update the track-list with the new track 
+            trackDiv.append(track)
+        }
     })
 }
-
-
-
-//! 2. Display results of searchMusic for user-selection:
-
-// function searchResults (input) {
-
-
-// }
 
 //! 3. Play user-selected track from searchResult:
 
@@ -70,3 +91,4 @@ document.addEventListener('DOMContentLoaded', function() {
 //         updateMusic(event.target.value)
 //     })
 // })
+
