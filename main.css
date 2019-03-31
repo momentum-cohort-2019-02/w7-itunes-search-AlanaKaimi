@@ -1,14 +1,32 @@
+body {
+    background-color: rgb(88, 87, 87);
+}
 .container {
-    border: 2px solid rgb(139, 3, 3);
+    border: 2px solid rgb(88, 5, 5);
+    border-radius: 20px;
+    background-color: rgb(182, 182, 196);
 }
 
+
 header {
-    border: 2px solid black;
+    border-bottom: 2px solid black;
+    border-radius: 20px;
+    background-color: #ffffff;
 }
+h1 {
+    margin-left: 20px;
+}
+
+h1 img {
+    max-height: 150px;
+    max-width: 150px;
+}
+
 
 /*! 1 SEARCH */
 .search {
-    border: 2px solid #5d0580;
+    /* border: 2px solid #5d0580; */
+    float: right;
 }
 
 #search-bar {
@@ -29,27 +47,30 @@ header {
 
 /*! 2 SELECT */
 .select {
-    border: 2px solid #5d0580;
+    /* border: 2px solid #5d0580; */
 }
 
 #track-list {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
+    clear: both;
 }
 
 .track {
-    max-width: 30%;
+    max-width: 50%;
     border: 2px solid black;
     border-radius: 20px;
     margin: 15px;
+    background-color: #ffffff;
 }
+
 
 .track img {
     float:left;
     border-radius: 100%;
     transform: translate(-15px, -10px);
-    box-shadow: -3px 4px rgb(206, 204, 204);
+    box-shadow: -3px 4px rgba(206, 204, 204, 0.623);
 }
 
 .track ul {
@@ -57,6 +78,8 @@ header {
     margin: 5px;
     padding: 5px;
 }
+
+
 
 audio {
     float: bottom;
