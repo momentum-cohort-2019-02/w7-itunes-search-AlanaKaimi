@@ -32,6 +32,36 @@ header {
     border: 2px solid #5d0580;
 }
 
+#track-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.track {
+    max-width: 30%;
+    border: 2px solid black;
+    border-radius: 20px;
+    margin: 15px;
+}
+
+.track img {
+    float:left;
+    border-radius: 100%;
+    transform: translate(-15px, -10px);
+    box-shadow: -3px 4px rgb(206, 204, 204);
+}
+
+.track ul {
+    list-style: none;
+    margin: 5px;
+    padding: 5px;
+}
+
+audio {
+    float: bottom;
+}
+
 /*! 3 PLAY */
 .play {
     border: 2px solid #5d0580;
