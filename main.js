@@ -1,10 +1,10 @@
 // globals fetch
 
-
 // functions that create shortcuts:
 function qS (selector) {
     return document.querySelector(selector)
 }
+
 function qSA (selector) {
     return document.querySelectorAll(selector)
 }
@@ -20,7 +20,7 @@ function qSA (selector) {
 
 // fetches data from itunes api and returns it 
 function getMusic () {
-    return fetch(`https://itunes-api-proxy.glitch.me/search?term=jack+johnson`)
+    return fetch(`https://itunes-api-proxy.glitch.me/search?term=nahko`)
     .then(function(response) {
         if (!response.ok) {
             throw Error(response.statusText)
@@ -80,15 +80,19 @@ function updateMusic () {
             playAudio.addEventListener('click', () => {
                 trackAudio.play()
             })
-            playAudio.innerText = "Let the Beet Drop"
+            playAudio.innerHTML = `<audio controls="controls">
+            <source src="${audioUrl}" type="audio/ogg" />
+            <source src="${audioUrl}" type="audio/mpeg" />
+            Your browser does not support the audio element.
+            </audio>`
 
 
             // inputs data elements into assigned div's
-            trackInfo.innerText = artistName + album + songName + trackLength; 
+            trackInfo.innerText = artistName + " " + album + " " + songName + " " + trackLength; 
             albumCover.innerHTML = `<img src="${coverImg}">`
 
             // update the new track
-            track.append(trackInfo, albumCover, playAudio)
+            track.append(albumCover, trackInfo, playAudio)
             // update the track-list with the new track 
             trackDiv.append(track)
         }
