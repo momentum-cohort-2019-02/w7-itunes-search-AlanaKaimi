@@ -52,11 +52,14 @@ function updateMusic () {
             // creates seperate div elements inside the track div for track info and the img
             const trackInfo = document.createElement('div')
             const albumCover = document.createElement('div')
+            const playAudio = document.createElement('div')
             
             // adds class declarations to the assigned div's
             track.classList.add('track')
             trackInfo.classList.add('track-details')
             albumCover.classList.add('cover-image')
+
+            playAudio.classList.add('playAudio')
             
             // assigns data from getMusic to the variables:      
             let artistName = musicData.results[idx].artistName
@@ -65,19 +68,27 @@ function updateMusic () {
             // Hint: See weather app example for the Icon at lines 36-51 in JS, then referenced in html on line 16
             let coverImg = musicData.results[idx].artworkUrl100
             // see MDN Docs here: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/audio
-            let audio = musicData.results[idx].previewUrl
+            let audioUrl = musicData.results[idx].previewUrl
             // convert milliseconds to minutes and seconds: https://stackoverflow.com/questions/21294302/converting-milliseconds-to-minutes-and-seconds-with-javascript
             let milliSec = musicData.results[idx].trackTimeMillis
             let minutes = Math.floor(milliSec / 60000)
             let seconds = ((milliSec % 60000) / 1000).toFixed(0);
             let trackLength = minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
-           
+    
+            // Referencing Yiffah's Code for insight
+            let trackAudio = new Audio(audioUrl)
+            playAudio.addEventListener('click', () => {
+                trackAudio.play()
+            })
+            playAudio.innerText = "Let the Beet Drop"
+
+
             // inputs data elements into assigned div's
             trackInfo.innerText = artistName + album + songName + trackLength; 
             albumCover.innerHTML = `<img src="${coverImg}">`
 
             // update the new track
-            track.append(trackInfo, albumCover)
+            track.append(trackInfo, albumCover, playAudio)
             // update the track-list with the new track 
             trackDiv.append(track)
         }
