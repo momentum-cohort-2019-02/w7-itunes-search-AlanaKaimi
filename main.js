@@ -88,7 +88,7 @@ function updateMusic () {
 
 
             // inputs data elements into assigned div's
-            trackInfo.innerText = artistName + " " + album + " " + songName + " " + trackLength; 
+            trackInfo.innerHTML = `<ul><li>Artist: ${artistName}</li><li>Album: ${album}</li><li>Track: ${songName} ${trackLength}` 
             albumCover.innerHTML = `<img src="${coverImg}">`
 
             // update the new track
