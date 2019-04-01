@@ -9,18 +9,11 @@ function qSA (selector) {
     return document.querySelectorAll(selector)
 }
 
-//! 1. Search for Music:
-
-// function searchMusic (input) {
-
-// }
-
-
-// //! 1.1 Get Music/Fetch
+// //! Get Music/Fetch
 
 // fetches data from itunes api and returns it 
-function getMusic () {
-    return fetch(`https://itunes-api-proxy.glitch.me/search?term=nahko`)
+function getMusic (searchText) {
+    return fetch(`https://itunes-api-proxy.glitch.me/search?${searchText}`)
     .then(function(response) {
         if (!response.ok) {
             throw Error(response.statusText)
@@ -29,11 +22,11 @@ function getMusic () {
     })
 }
 
-//! 2 Display results of getMusic :
+//!  Display results of getMusic :
 
-function updateMusic () {
+function updateMusic (searchText) {
     // calls the getMusic function to have access to it's data
-    getMusic()
+    getMusic(searchText)
     // Here we go...
     .then(function (musicData) {
         console.log(musicData)
@@ -99,18 +92,29 @@ function updateMusic () {
     })
 }
 
-//! 3. Play user-selected track from searchResult:
+//!  Play user-selected track from searchResult:
 
 // function playTrack () {
 
 // }
 
 document.addEventListener('DOMContentLoaded', function() {
-        updateMusic()
-})
-// document.addEventListener('DOMContentLoaded', function() {
-//     qS('').addEventListener('change', function (event) {
-//         updateMusic(event.target.value)
-//     })
-// })
+// Yiffah rocking it with the code inspirations:
+    // finds div w the id search-bar and assigns it to searchField
+    let searchField = qS('#search-bar')
+    // adds the change event to searchfield, so when there is a change in input, the searchbar is activated
+    searchField.addEventListener('change', event => {
+        event.preventDefault()
+        // assigns term= to searchText
+        let searchText = 'term='
+        // adds it to the begining of what the user inputs into the searchField while encoding the input to account for spaces and special characters
+        searchText += encodeURIComponent(searchField.value)
+        console.log(searchText)
+        searchField.value = ''
+        // clears display for new results
+        qS('#track-list').innerHTML = ''
 
+        // calls updateMusic into action
+        updateMusic(searchText)
+    })
+})
