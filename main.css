@@ -3,19 +3,20 @@ body {
 }
 
 .container {
-    border: 2px solid rgb(88, 5, 5);
+    max-width: 80%;
+    margin: auto;
+    border: 1px solid rgb(88, 5, 5);
     border-radius: 20px;
     background-color: rgb(182, 182, 196);
 }
 
 header {
-    /* border-bottom: 2px solid black; */
     border-radius: 10px;
     background-color: #ffffff;
 }
 
 h1 {
-    font-size: 4.5em;
+    font-size: 4.5rem;
     margin-left: 20px;
     text-shadow: -3px 4px rgba(218, 214, 214, 0.712);
 }
@@ -26,27 +27,33 @@ h1 img {
 
 }
 
+h2 {
+    font-size: 1.25rem;
+    text-align: center;
+}
+
 
 /*! 1 SEARCH */
-/* .search {
-    float: right;
-    border-radius: 30px -30px 30px 30px;
 
-} */
 
 @import url("https://fonts.googleapis.com/css?family=Inconsolata:700");
 
 .container2 {
+    max-width: 300px;
+    position: relative;
+    margin: auto;
+    right: 0;
     float: right;
     height: 100px;
 }
 
+/* search button */
 .container2 .search {
     position: absolute;
     margin: auto;
-
+    top: 0;
+    bottom: 0;
     right: 0;
-
     width: 60px;
     height: 60px;
     background: #c4356e;
@@ -60,6 +67,7 @@ h1 img {
     cursor: pointer;
 }
 
+/* handle of magnifying glass */
 .container2 .search::before {
     content: "";
     position: absolute;
@@ -75,6 +83,7 @@ h1 img {
     transition: all 0.5s;
 }
 
+/* circle of magnifying glass */
 .container2 .search::after {
     content: "";
     position: absolute;
@@ -90,15 +99,14 @@ h1 img {
     transition: all 0.5s;
 }
 
-
-
+/* search-bar input */
 .container2 input {
     font-family: "Inconsolata", monospace;
     position: absolute;
     margin: auto;
-
-    right: 10px;
-
+    top: 0;
+    bottom: 0;
+    right: 0;
     width: 60px;
     height: 60px;
     outline: none;
@@ -121,13 +129,14 @@ h1 img {
 }
 
 .container2 input:focus {
+    position: absolute;
     width: 300px;
     opacity: 1;
     cursor: text;
 }
 
+/* active search button */
 .container2 input:focus~.search {
-    /* right: -250px; */
     background: #151515;
     z-index: 6;
 }
@@ -173,13 +182,12 @@ h1 img {
 }
 
 .track {
-    max-width: 325px;
-    border: 2px solid black;
-    border-radius: 10px;
-    margin: 15px;
+    width: 325px;
+    border: 1px solid black;
+    border-radius: 5px;
+    margin: 10px;
     background-color: #ffffff;
 }
-
 
 .track img {
     float: left;
@@ -201,9 +209,12 @@ button {
     box-shadow: -1px 1px rgba(218, 214, 214, 0.712);
 }
 
-
 audio {
     float: bottom;
 }
 
 /*! 3 PLAY */
+
+.small-font {
+    font-size: .5rem;
+}
